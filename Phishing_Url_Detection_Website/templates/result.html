@@ -1,0 +1,19 @@
+<!-- urldetection/templates/result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing URL Detection Result</title>
+</head>
+<body>
+    <h1>Phishing URL Detection Result</h1>
+    <p>The URL you entered: <strong>{{ url }}</strong></p>
+    {% if is_phishing %}
+    <p style="color: green;">This URL is <strong>not</strong> a phishing site.</p>  
+    {% else %}
+    <p style="color: red;">This URL is likely a <strong>phishing</strong> site.</p>
+    {% endif %}
+    <a href="{% url 'detect_phishing' %}">Check another URL</a>
+</body>
+</html>
