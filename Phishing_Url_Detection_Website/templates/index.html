@@ -10,67 +10,102 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
             color: #333;
-
+            background-color: #f0f0f0;
+            background-image: url('static/image1.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         }
 
         header {
-            background-color: #4CAF50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
             color: white;
-            padding: 15px 0;
-            text-align: center;
-            font-size: 24px;
+            padding: 20px;
+            font-size: 38px;
+            text-align:center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
         }
 
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            text-align: center;
-            margin-top: 10%;
-        }
-
-        form {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-        }
-
-        .input-group {
             position: relative;
-            display: inline-block;
+            width: 100%;
+            max-width: 800px;
+            margin: 10% auto 0 auto;
+            text-align: center;
         }
 
-        #url {
-            width: 70%;
+        .title {
+            position: absolute;
+            top: -160px;
+            text-decoration: underline;
+            left: 40%;
+            transform: translateX(-50%);
+            font-size: 40px;
+            color: #333;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+        }
+
+        .url-input {
+            width: 700px;
+            height: 50px;
             padding: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
         }
 
-        button {
+        .check-button {
+            position: absolute;
+            top: 100%;
+            left: 25%;
+            width: 250px;
+            height: 55px;
             background-color: #4CAF50;
             color: white;
             padding: 10px;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
+            font-size: 26px;
         }
 
-        button img {
-            width: 20px; /* Adjust size of the icon */
-            vertical-align: middle;
-        }
-
-        button:hover {
+        .check-button:hover {
             background-color: #45a049;
         }
 
@@ -88,21 +123,43 @@
 
 <body>
     <header>
-        URL Scanner
+        <div class="logo">
+            <img src="static/image2.png" alt="Logo">
+            <span>URL Scanner</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#footer">Contact</a>
+        </div>
     </header>
     <div class="container">
-        <h1>Phishing URL Detection</h1>
-        <form action="{% url 'detect_phishing' %}" method="post">
-            {% csrf_token %}
-            <div class="input-group">
-                <input type="text" id="url" name="url" required placeholder="Enter URL">
-                <button type="submit">Check</button>
-            </div>
-        </form>
+        <h1 class="title">Phishing URL Detection</h1>
+        <div class="form-container">
+            <form action="{% url 'detect_phishing' %}" method="post" onsubmit="handleSubmit(event)">
+                {% csrf_token %}
+                <input type="text" id="url" name="url" class="url-input" required placeholder="Enter URL">
+                <button type="submit" class="check-button">Check</button>
+            </form>
+        </div>
     </div>
-    <footer>
+    <footer id="footer">
         &copy; 2024 URL Scanner. All rights reserved.
     </footer>
+    <script>
+        function removeQueryPart(url) {
+            const parser = document.createElement('a');
+            parser.href = url;
+            return parser.protocol + "//" + parser.hostname + parser.pathname;
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const urlInput = document.getElementById('url');
+            const mainURL = removeQueryPart(urlInput.value);
+            urlInput.value = mainURL;
+            event.target.submit();
+        }
+    </script>
 </body>
 
 </html>
