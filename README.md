@@ -8,7 +8,6 @@ Phishing Website Detector is a dynamic web application built using Django, a hig
 - **Dynamic Classification**: Utilizes the XGBoost machine learning algorithm to dynamically classify URLs.
 - **User-Friendly Interface**: Intuitive web interface designed for ease of use.
 - **Real-Time Results**: Instantaneous feedback on the classification of submitted URLs.
-- **Secure and Reliable**: Built with security best practices to ensure user data safety.
 - **Review Page**: Includes a feedback mechanism where users can provide reviews and suggestions.
 
 ## Technologies Used
@@ -16,7 +15,6 @@ Phishing Website Detector is a dynamic web application built using Django, a hig
 - **Django**: Python-based web framework for backend development.
 - **XGBoost**: Machine learning algorithm for URL classification.
 - **HTML/CSS**: Frontend design for a visually appealing user experience.
-- **SQLite/PostgreSQL**: Databases used to store URL data securely.
 
 ## Screenshots
 
