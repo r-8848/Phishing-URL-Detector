@@ -1,86 +1,48 @@
 
-# Phishing Website Detector
+ChatGPT
+Phishing Website Detector
+Phishing Website Detector is a dynamic web application built using Django, a high-level Python web framework. It offers users a seamless and robust platform to analyze URLs and classify them based on their likelihood of being phishing websites.
 
-## Introduction
+Features:
+URL Analysis: Enter any URL to analyze and classify its phishing risk.
+Dynamic Classification: Utilizes the XGBoost machine learning algorithm to dynamically classify URLs.
+User-Friendly Interface: Intuitive web interface designed for ease of use.
+Real-Time Results: Instantaneous feedback on the classification of submitted URLs.
+Secure and Reliable: Built with security best practices to ensure user data safety.
+Review Page: Includes a feedback mechanism where users can provide reviews and suggestions.
+Technologies Used:
+Django: Python-based web framework for backend development.
+XGBoost: Machine learning algorithm for URL classification.
+HTML/CSS: Frontend design for a visually appealing user experience.
+SQLite/PostgreSQL: Databases used to store URL data securely.
+How to Use:
+Clone the Repository:
 
-Url Scanner is a dynamic web application that analyzes URL obtained from the user and classifies them.. Built using Django, a high-level Python web framework, Url Scanner offers users a seamless and robust platform to stay updated with current affairs while understanding the sentiment behind each news piece.
-safe in the today's era of increasing cyberattacks by proper classification.
-## Features
+bash
+Copy code
+git clone https://github.com/your/repository.git
+Install Dependencies:
 
-- **User Input**:Allows user to input URL for phishing 
-- **Detection**: Analyzes and categorizes URL as Legitimate and Phishing.
-- **Feedback**: Allows users to give feedback based on their experience.
-- **Responsive Design**: Ensures a seamless user experience across different devices.
+Copy code
+pip install -r requirements.txt
+Run the Application:
 
-## Live Demo
+Copy code
+python manage.py runserver
+Access the Application:
+Open your web browser and go to http://localhost:8000 to use the application.
 
+Screenshots:
 
-## Screenshots
-
-
-
-### Home Page
-
-
-### Phishing Url Detection Results
-
-
-## Getting Started
-
-Follow these steps to set up and run the NewsApp on your local machine.
-
-1. Clone the github repository.
-
-3. Go to Url Scanner and bash these commands
-   ```bash
-   pip install virtualenv
-    ```
-   ```bash
-   python -m venv myenv
-   ```
-   ```bash
-   cd myen
-   ```
-   ```bash
-   cd Scripts
-   ```
-   ```bash
-   .\activate
-   ```
-    ```bash
-   cd ../..
-    ```
-     ```bash
-   pip install -r requirements.txt
-   ```
-   ```bash
-   python manage.py migrate
-   ```
-    ```bash
-   python manage.py runserver
-   ```
+Homepage of Phishing Website Detector
 
 
-### Prerequisites
+Example of URL classification results
 
-Ensure you have the following installed on your system:
+Review Page:
+Users can visit the review page to provide feedback, suggestions, and report any issues encountered while using the application.
 
-- Python (version 3.6 or higher)
-- pip (Python package installer)
-- Git
-
-### How It Works
-
-1. **Url Feature Extraction**:From the url entered by user, total 16 different features categorized as Address Bar based Features, Domain based Features, HTML & Javascript based Features are extracted from url.   
-2. **Detection**:Each url is analyzed based on feature extracted using one of the most popular machine learning algorithms  XGBoost( eXtreme Gradient Boosting) to determine whether is it is legitimate or phishing. 
-3. **Classification**:Url are then categorized based on the value(Label) returned by the model:
-   - **Label 0**:Url are classified as Legitimate.
-   - **Label 1**: Url are classified as Phishing.
-   
-
-### Contributing
-We welcome contributions to Url Scanner! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
-
-
+Contributing:
+Contributions are welcome! If you want to contribute to this project, fork the repository and submit a pull request with your changes.
 
 
