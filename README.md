@@ -1,5 +1,3 @@
-
-ChatGPT
 Phishing Website Detector
 Phishing Website Detector is a dynamic web application built using Django, a high-level Python web framework. It offers users a seamless and robust platform to analyze URLs and classify them based on their likelihood of being phishing websites.
 
