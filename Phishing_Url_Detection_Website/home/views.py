@@ -5,7 +5,7 @@ import os
 
 # Construct the full path to the model
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-model_path = os.path.join(BASE_DIR, 'ML_Model', 'xgboost_model_joblib.joblib')
+model_path = os.path.join(BASE_DIR, 'ML_Model', 'xgboost_model.joblib')
 
 # Load the saved model
 xgb_model = load(model_path)
