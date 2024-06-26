@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <style>
+        /* Custom CSS for review form and reviews */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: black;
+            color: white;
+            padding: 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 1rem;
+        }
+
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+    
+        .footer-content {
+            text-align: center;
+        }
+    
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+    
+        .social-icons a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+    
+        .social-icons a:hover {
+            color: #bbb;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            flex: 1;
+        }
+        .formcontainer{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .box {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            color: #555;
+            font-weight:bold;
+            margin-bottom: 10px;
+        }
+
+        .button.is-primary {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+            color: #fff;
+            margin-top: 10px;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .button.is-primary:hover {
+            background-color: #45a049;
+            border-color: #45a049;
+        }
+
+        .media-content {
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        .media-content p {
+            margin-bottom: 5px;
+        }
+
+        .media-content small {
+            color: #888;
+        }
+
+        .fas.fa-star, .far.fa-star {
+            color: #f1c40f;
+            font-size: 1.2rem;
+        }
+
+        .success-message {
+            color: #4CAF50;
+            margin-top: 10px;
+            text-align: center;
+            animation: fade-in 0.5s ease-out;
+        }
+
+        .login-message {
+            color: #555;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px;
+            transition: 0.3s;
+        }
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+            unicode-bidi: bidi-override;
+            direction: rtl;
+        }
+        
+        .star-rating input {
+            display: none;
+        }
+        
+        .star-rating label {
+            color: #ccc;
+            font-size: 40px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .star-rating label:before {
+            content: '\2605';
+            padding: 0 2px;
+        }
+        
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            color: #f1c40f;
+        }
+
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+        
+        .field:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+        
+        .control {
+            position: relative;
+        }
+        
+        .control input,
+        .control textarea {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 0.5rem;
+            width: 100%;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .control input:focus,
+        .control textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        
+        .control textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+                position: fixed;
+                right: 20px;
+                top: 16px;
+                z-index: 1000;
+            }
+        
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 0;
+                gap: 0;
+                flex-direction: column;
+                background-color: #1d1d1d;
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: 0.3s;
+                z-index: 999;
+                padding-top: 70px;
+            }
+        
+            .nav-links.active {
+                right: 0;
+            }
+        
+            .nav-links a {
+                padding: 15px;
+                display: block;
+            }
+        
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+        
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+        
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            .container {
+                padding: 10px;
+            }
+
+            .box {
+                padding: 15px;
+            }
+
+            .star-rating label {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .star-rating label {
+                font-size: 24px;
+            }
+        }
+
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                {% load static %}
+                <img src="{% static 'image2.png' %}" alt="Logo">
+                <span>URL Scanner</span>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <nav class="nav-links" id="nav-links">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'review_page' %}">Review</a>
+                <a href="#footer">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="title">Customer Reviews</h1>
+
+            <!-- Review Form -->
+            <div class="formcontainer">
+                <div class="box">
+                    <h2 class="subtitle">Write a Review</h2>
+                    <form method="post" action="{% url 'review_page' %}">
+                        {% csrf_token %}
+                        <div class="field">
+                            <label class="label">{{ form.stars.label }}</label>
+                            <div class="star-rating">
+                                {% for value in "54321" %}
+                                    <input type="radio" id="rating-{{ value }}" name="{{ form.stars.name }}" value="{{ value }}" {% if value == form.stars.value|stringformat:"s" %}checked{% endif %}>
+                                    <label for="rating-{{ value }}"></label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <div class="field">
+                            <label class="label">{{ form.name.label }}</label>
+                            <div class="control">
+                                {{ form.name }}
+                            </div>
+                        </div>
+            
+                        <div class="field">
+                            <label class="label">{{ form.review_text.label }}</label>
+                            <div class="control">
+                                {{ form.review_text }}
+                            </div>
+                        </div>
+            
+                        <div class="field">
+                            <div class="control">
+                                <button type="submit" class="button is-primary">Submit Review</button>
+                            </div>
+                        </div>
+                    </form>
+                    {% if submitted %}
+                        <p class="success-message">Review submitted successfully!</p>
+                    {% endif %}
+                </div>
+            </div>
+            <!-- Display Reviews -->
+            <div class="box">
+                <h2 class="subtitle">Latest Reviews</h2>
+                {% for review in reviews %}
+                    <article class="media">
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <strong>{{ review.name }}</strong>
+                                    <br> 
+                                    {% for _ in review.star_icons %}
+                                        <i class="fas fa-star"></i>
+                                    {% endfor %}
+                                    {% for _ in review.empty_star_icons %}
+                                        <i class="far fa-star"></i>
+                                    {% endfor %}
+                                </p>
+                                <p>{{ review.review_text }}</p>
+                                <p><small>{{ review.datetime }}</small></p>
+                            </div>
+                        </div>
+                    </article>
+                {% empty %}
+                    <p>No reviews yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content" id="footerid">
+            <p>&copy; 2024 News App. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+        
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+        
+            // Close menu when a link is clicked
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        
+            // Handle responsive behavior
+            function handleResponsive() {
+                if (window.innerWidth <= 768) {
+                    navLinks.style.top = `${Math.max(70 - window.scrollY, 0)}px`;
+                } else {
+                    navLinks.style.top = '';
+                }
+            }
+        
+            window.addEventListener('scroll', handleResponsive);
+            window.addEventListener('resize', handleResponsive);
+            handleResponsive(); // Initial call
+        });
+        </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const starLabels = document.querySelectorAll('.star-rating label');
+            const starsInput = document.querySelector(`input[name="{{ form.stars.name }}"]`);
+        
+            function updateStarLabels(value, hovered = false) {
+                starLabels.forEach((label, index) => {
+                    if (index < starLabels.length - value) {
+                        label.style.color = hovered ? '#ffcc00' : '#f1c40f';
+                    } else {
+                        label.style.color = '#ccc';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
