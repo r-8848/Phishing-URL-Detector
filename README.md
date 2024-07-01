@@ -118,7 +118,7 @@ Additional performance metrics:
 
 1. **Clone the Repository**:
     ```sh
-    git clone https://github.com/RisSonthalia/Phishing-URL-Detector.git
+    git clone https://github.com/r-8848/Phishing-URL-Detector.git
 
 3. **Install Dependencies**:
      ```sh
