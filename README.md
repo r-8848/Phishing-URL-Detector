@@ -150,7 +150,7 @@ We are committed to continually improving this tool. Future plans include:
 5. Creating browser extensions for instant URL checking while surfing
 
 ## RESEARCH PAPER
-FOR MORE DETAILED INFORMATION ABOUT THE RESEARCH AND METHODOLOGY BEHIND THIS PROJECT, PLEASE REFER TO THE FOLLOWING RESEARCH PAPER:
+For more detailed information about the research and methodology behind this project, please refer to the following research paper:
 
 [LINK TO RESEARCH PAPER](https://drive.google.com/file/d/1eDVB8IzfEaG3Mzv4-FNR8W5O_nNq6faX/view)
 
